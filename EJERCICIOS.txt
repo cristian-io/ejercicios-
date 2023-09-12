@@ -1,0 +1,184 @@
+
+EJERCICIO1
+
+int main() {
+    int atleta1_minutos, atleta1_segundos, atleta2_minutos, atleta2_segundos;
+
+    cout << "Ingresa los minutos y segundos del primer atleta separados por espacios: ";
+    cin >> atleta1_minutos >> atleta1_segundos;
+
+    cout << "Ingresa los minutos y segundos del segundo atleta separados por espacios: ";
+    cin >> atleta2_minutos >> atleta2_segundos;
+
+    int tiempo_total_segundos = (atleta1_minutos + atleta2_minutos) * 60 + atleta1_segundos + atleta2_segundos;
+
+    int horas = tiempo_total_segundos / 3600;
+    int minutos = (tiempo_total_segundos % 3600) / 60;
+    int segundos = tiempo_total_segundos % 60;
+
+    cout << "Tiempo total: " << horas << " horas, " << minutos << " minutos, " << segundos << " segundos" << endl;
+
+    return 0;
+}
+
+EJERCICIO2
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    double pies, conversion, metros, conversion2, sum, conversion3, conversion4, sum2, conversion5, sum3, conversion6, conversion7, sum4;
+    cout <<"Ingrese una medida de pies \n";
+    cin >> pies;
+    cout << "Ingrese una medida de metros \n";
+    cin >> metros;
+    conversion=pies*12;
+    conversion2=metros*39.37;
+    sum=conversion+conversion2;
+    
+    conversion3=pies/3;
+    conversion4=metros*1.094;
+    sum2=conversion3+conversion4;
+    
+    conversion5=pies/3.281;
+    sum3=conversion5+metros;
+    
+    conversion6=pies/5280;
+    conversion7=metros/1609;
+    sum4=conversion6+conversion7;
+    
+    cout << "La suma de estas dos en pulgadas es: " << sum << "\n";
+    cout << "La suma de estas dos en yardas es: " << sum2 << "\n";
+    cout << "La suma de estas dos en metros es: " << sum3 << "\n";
+    cout << "La suma de estas dos en millas es: " << sum4;
+    
+    return 0;
+}
+
+EJERCICIO3 
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num_hijos, edad_escolar;
+    char es_viuda;
+
+    cout << "Ingrese el número de hijos: ";
+    cin >> num_hijos;
+
+    cout << "¿La madre es viuda? (S/N): ";
+    cin >> es_viuda;
+
+    if (num_hijos <= 2) {
+        if (es_viuda == 'S' || es_viuda == 's') {
+            cout << "El monto mensual es S/. 90.00" << endl;
+        } else {
+            cout << "El monto mensual es S/. 70.00" << endl;
+        }
+    } else if (num_hijos >= 3 && num_hijos <= 5) {
+        if (es_viuda == 'S' || es_viuda == 's') {
+            cout << "El monto mensual es S/. " << 90.00 + 20.00 << endl;
+        } else {
+            cout << "El monto mensual es S/. 90.00" << endl;
+        }
+    } else if (num_hijos >= 6) {
+        if (es_viuda == 'S' || es_viuda == 's') {
+            cout << "El monto mensual es S/. " << 120.00 + 20.00 << endl;
+        } else {
+            cout << "El monto mensual es S/. 120.00" << endl;
+        }
+    }
+
+    cout << "¿Cuántos hijos están en edad escolar (entre 6 y 18 años)?: ";
+    cin >> edad_escolar;
+
+    cout << "El monto mensual total es S/. " << (edad_escolar * 10.00) << endl;
+
+    return 0;
+}
+
+EJERCICIO4
+
+#include <iostream>
+using namespace std;
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    float num1, num2;
+    char operacion;
+
+    cout << "Ingrese el primer número: ";
+    cin >> num1;
+
+    cout << "Ingrese el segundo número: ";
+    cin >> num2;
+
+
+    cout << "Elija una operación ( + para suma, - para resta, * para multiplicación, / para división): ";
+    cin >> operacion;
+
+    switch(operacion) {
+        case '+':
+            cout << "El resultado de la suma es: " << num1 + num2 << endl;
+            break;
+        case '-':
+            cout << "El resultado de la resta es: " << num1 - num2 << endl;
+            break;
+        case '*':
+            cout << "El resultado de la multiplicación es: " << num1 * num2 << endl;
+            break;
+        case '/':
+            if (num2 != 0) {
+                cout << "El resultado de la división es: " << num1 / num2 << endl;
+            } else {
+                cout << "Error: No se puede dividir por cero." << endl;
+            }
+            break;
+        default:
+            cout << "Operación no válida." << endl;
+    }
+
+    return 0;
+}
+
+EJERCICIO5
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    vector<int> distancias = {50, 55, 57, 58, 60};
+    int t = 174;
+
+    // Ordenar las distancias de mayor a menor
+    sort(distancias.rbegin(), distancias.rend());
+
+    // Elegir las tres mayores distancias que no superen t
+    vector<int> pueblos_elegidos;
+    int distancia_total = 0;
+
+    for (int i = 0; i < distancias.size(); i++) {
+        if (distancia_total + distancias[i] <= t && pueblos_elegidos.size() < 3) {
+            pueblos_elegidos.push_back(distancias[i]);
+            distancia_total += distancias[i];
+        }
+    }
+
+    // Mostrar las distancias y los pueblos elegidos
+    cout << "Distancias elegidas: ";
+    for (int i = 0; i < pueblos_elegidos.size(); i++) {
+        cout << pueblos_elegidos[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+
+
